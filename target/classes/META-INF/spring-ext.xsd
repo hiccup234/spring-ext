@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns="http://www.hiccup.top:8888/schema/spring-ext"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.hiccup.top:8888/schema/spring-ext">
+
+    <!--声明一个标签，名字为user，类型为复杂类型userType-->
+    <xsd:element name="user" type="userType" />
+    <!--定义userType类型，这里定义了id,userId,name,age四个属性-->
+    <xsd:complexType name="userType">
+        <xsd:attribute name="id" type="xsd:string" />
+        <xsd:attribute name="userId" type="xsd:string" use="required" />
+        <xsd:attribute name="name" type="xsd:string" use="required" />
+        <xsd:attribute name="age" type="xsd:string" use="required" />
+    </xsd:complexType>
+
+</xsd:schema>
