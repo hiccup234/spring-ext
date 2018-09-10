@@ -1,6 +1,6 @@
 package com.hiccup.spring.ext;
 
-import com.hiccup.test.User;
+import com.hiccup.spring.ext.bean.User;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.w3c.dom.Element;

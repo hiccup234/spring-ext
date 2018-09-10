@@ -4,6 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * Replace注解
+ * 在Spring启动加载Bean时直接替换被@Replace标注的组件
  *
  * @author wenhy
  * @date 2018/5/31
@@ -13,7 +14,10 @@ import java.lang.annotation.*;
 @Documented
 public @interface Replace {
 
-    // 多个继承子类时，以order值最大的作为最终注册到容器的bean
+    /**
+     * 多个继承子类时，以order值最大的作为最终注册到容器的bean
+     * @return
+     */
     String order() default "0";
 
 }

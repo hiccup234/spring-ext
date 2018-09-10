@@ -12,9 +12,10 @@ import org.springframework.context.SpringContextHolder;
 import org.w3c.dom.Element;
 
 public class ExtComponentScanBeanDefinitionParser extends ComponentScanBeanDefinitionParser {
-    protected static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
-    protected static final String EXPRESSION_ATTRIBUTE = "expression";
-    protected final Log logger = LogFactory.getLog(getClass());
+
+//    protected static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
+//    protected static final String EXPRESSION_ATTRIBUTE = "expression";
+//    protected final Log logger = LogFactory.getLog(getClass());
 
     @Override
     protected ClassPathBeanDefinitionScanner createScanner(XmlReaderContext readerContext, boolean useDefaultFilters) {

@@ -1,4 +1,4 @@
-package com.hiccup.test.aspectj;
+package com.hiccup.spring.ext.test.aspectj;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;

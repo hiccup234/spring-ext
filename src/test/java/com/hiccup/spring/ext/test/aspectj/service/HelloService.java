@@ -1,4 +1,4 @@
-package com.hiccup.test.aspectj.service;
+package com.hiccup.spring.ext.test.aspectj.service;
 
 import org.springframework.stereotype.Component;
 

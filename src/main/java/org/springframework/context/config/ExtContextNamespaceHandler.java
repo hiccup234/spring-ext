@@ -1,6 +1,7 @@
 package org.springframework.context.config;
 
 import com.hiccup.spring.ext.UserBeanDefinitionParser;
+import com.hiccup.spring.ext.UserBeanDefinitionParser;
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 import org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser;
 import org.springframework.context.annotation.ExtComponentScanBeanDefinitionParser;

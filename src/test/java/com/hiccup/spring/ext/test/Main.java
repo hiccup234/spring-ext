@@ -1,4 +1,4 @@
-package com.hiccup.test;
+package com.hiccup.spring.ext.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
