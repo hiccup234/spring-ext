@@ -1,6 +1,6 @@
-package com.hiccup.spring.ext.test;
+package top.hiccup.spring.ext.test;
 
-import com.hiccup.spring.ext.bean.User;
+import top.hiccup.spring.ext.bean.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

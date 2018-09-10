@@ -1,4 +1,4 @@
-package com.hiccup.spring.ext.test;
+package top.hiccup.spring.ext.test;
 
 import org.springframework.context.annotation.Replace;
 import org.springframework.stereotype.Service;

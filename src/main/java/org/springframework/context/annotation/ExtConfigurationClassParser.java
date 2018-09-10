@@ -582,16 +582,16 @@ class ExtConfigurationClassParser {
             this.imports.add(importedClass, importingClass);
         }
 
-        @Override
-        public void removeImportingClass(String importedClass) {
-            for (List<AnnotationMetadata> list : this.imports.values()) {
-                for (Iterator<AnnotationMetadata> iterator = list.iterator(); iterator.hasNext();) {
-                    if (iterator.next().getClassName().equals(importedClass)) {
-                        iterator.remove();
-                    }
-                }
-            }
-        }
+//        @Override
+//        public void removeImportingClass(String importedClass) {
+//            for (List<AnnotationMetadata> list : this.imports.values()) {
+//                for (Iterator<AnnotationMetadata> iterator = list.iterator(); iterator.hasNext();) {
+//                    if (iterator.next().getClassName().equals(importedClass)) {
+//                        iterator.remove();
+//                    }
+//                }
+//            }
+//        }
 
         public void removeImportingClassFor(String importedClass) {
             for (List<AnnotationMetadata> list : this.imports.values()) {

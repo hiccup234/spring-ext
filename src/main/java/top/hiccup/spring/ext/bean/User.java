@@ -1,4 +1,4 @@
-package com.hiccup.spring.ext.bean;
+package top.hiccup.spring.ext.bean;
 
 /**
  * User类，用来接收配置文件自定义标签的信息

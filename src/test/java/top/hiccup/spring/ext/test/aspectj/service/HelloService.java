@@ -1,9 +1,9 @@
-package com.hiccup.spring.ext.test.aspectj.service;
+package top.hiccup.spring.ext.test.aspectj.service;
 
 import org.springframework.stereotype.Component;
 
 /**
- * F
+ * HelloService类
  *
  * @author wenhy
  * @date 2018/9/2
@@ -17,6 +17,7 @@ public class HelloService {
     }
 
     public String sayGoodbye(String name) {
+        System.out.println("In method sayGoodbye");
         return "Bye " + name;
     }
 }

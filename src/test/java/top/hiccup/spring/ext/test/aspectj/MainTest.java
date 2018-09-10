@@ -1,6 +1,6 @@
-package com.hiccup.spring.ext.test.aspectj;
+package top.hiccup.spring.ext.test.aspectj;
 
-import com.hiccup.spring.ext.test.aspectj.service.HelloService;
+import top.hiccup.spring.ext.test.aspectj.service.HelloService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

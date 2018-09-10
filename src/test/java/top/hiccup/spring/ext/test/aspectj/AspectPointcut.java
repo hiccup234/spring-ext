@@ -1,4 +1,4 @@
-package com.hiccup.spring.ext.test.aspectj;
+package top.hiccup.spring.ext.test.aspectj;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;

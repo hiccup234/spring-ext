@@ -165,9 +165,10 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
      * {@code AnnotationConfig*} application contexts or the {@code
      * <context:annotation-config>} element. Any bean name generator specified against
      * the application context will take precedence over any value set here.
-     * @since 3.1.1
+     *
      * @see AnnotationConfigApplicationContext#setBeanNameGenerator(BeanNameGenerator)
      * @see AnnotationConfigUtils#CONFIGURATION_BEAN_NAME_GENERATOR
+     * @since 3.1.1
      */
     public void setBeanNameGenerator(BeanNameGenerator beanNameGenerator) {
         Assert.notNull(beanNameGenerator, "BeanNameGenerator must not be null");
@@ -259,8 +260,7 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
                 if (logger.isDebugEnabled()) {
                     logger.debug("Bean definition has already been processed as a configuration class: " + beanDef);
                 }
-            }
-            else if (ConfigurationClassUtils.checkConfigurationClassCandidate(beanDef, this.metadataReaderFactory)) {
+            } else if (ConfigurationClassUtils.checkConfigurationClassCandidate(beanDef, this.metadataReaderFactory)) {
                 configCandidates.add(new BeanDefinitionHolder(beanDef, beanName));
             }
         }
@@ -296,11 +296,16 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
 
             // Read the model and create bean definitions based on its content
 
-                if (this.reader == null) {
+            if (this.reader == null) {
+                // 4.1.4.RELEASE
                 this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
-//                        this.problemReporter, this.metadataReaderFactory,
+                        this.problemReporter, this.metadataReaderFactory,
                         this.resourceLoader, this.environment,
                         this.importBeanNameGenerator, parser.getImportRegistry());
+                // 4.3.10.RELEASE
+//                this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
+//                        this.resourceLoader, this.environment,
+//                        this.importBeanNameGenerator, parser.getImportRegistry());
             }
             this.reader.loadBeanDefinitions(configClasses);
             alreadyParsed.addAll(configClasses);
@@ -369,7 +374,11 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
             try {
                 // Set enhanced subclass of the user-specified bean class
                 Class<?> configClass = beanDef.resolveBeanClass(this.beanClassLoader);
-                Class<?> enhancedClass = enhancer.enhance(configClass, configClass.getClassLoader());
+
+                // 4.1.4.RELEASE
+                Class<?> enhancedClass = enhancer.enhance(configClass);
+                // 4.3.10.RELEASE
+//                Class<?> enhancedClass = enhancer.enhance(configClass, configClass.getClassLoader());
                 if (configClass != enhancedClass) {
                     if (logger.isDebugEnabled()) {
                         logger.debug(String.format("Replacing bean definition '%s' existing class name '%s' " +
@@ -377,8 +386,7 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
                     }
                     beanDef.setBeanClass(enhancedClass);
                 }
-            }
-            catch (Throwable ex) {
+            } catch (Throwable ex) {
                 throw new IllegalStateException("Cannot load configuration class: " + beanDef.getBeanClassName(), ex);
             }
         }
@@ -400,7 +408,7 @@ public class ExtConfigurationClassPostProcessor implements BeanDefinitionRegistr
         }
 
         @Override
-        public Object postProcessBeforeInitialization(Object bean, String beanName)  {
+        public Object postProcessBeforeInitialization(Object bean, String beanName) {
             if (bean instanceof ImportAware) {
                 ImportRegistry importRegistry = this.beanFactory.getBean(IMPORT_REGISTRY_BEAN_NAME, ImportRegistry.class);
                 AnnotationMetadata importingClass = importRegistry.getImportingClassFor(bean.getClass().getSuperclass().getName());
