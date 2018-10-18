@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * Replace注解
- * 在Spring启动加载Bean时直接替换被@Replace标注的组件
+ * 在Spring启动加载Bean时直接用被@Replace标注的组件替换容器中原来的同名组件
  *
  * @author wenhy
  * @date 2018/5/31

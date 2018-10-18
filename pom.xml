@@ -6,7 +6,7 @@
 
     <groupId>top.hiccup</groupId>
     <artifactId>spring-ext</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>4.1.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -49,12 +49,26 @@
             <version>1.5.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provide</scope>
+        </dependency>
+
+        <!-- test相关包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.1.4.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>spring-ext</finalName>
-        <!-- 打包源码路径下的资源文件 -->
         <resources>
+            <!-- 打包源码路径下的资源文件 -->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
@@ -70,6 +84,30 @@
                 <filtering>false</filtering>
             </resource>
         </resources>
+        <plugins>
+            <!-- 通过指定编译器版本，可以解决IDEA自动重置LanguageLevel和JavaCompiler版本的问题 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
+    <!-- 目前打包到公司的远程仓库，这里不要上传 -->
+    <distributionManagement>
+        <repository>
+            <id>wlqq-releases</id>
+            <url>http://nexus.56qq.cn:81/content/repositories/wlqq-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>wlqq-snapshots</id>
+            <url>http://nexus.56qq.cn:81/content/repositories/wlqq-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

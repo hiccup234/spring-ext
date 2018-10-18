@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xsd:schema xmlns="http://www.hiccup.top:8888/schema/spring-ext"
+<xsd:schema xmlns="http://www.hiccup.top/schema/spring-ext"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified"
-            targetNamespace="http://www.hiccup.top:8888/schema/spring-ext">
+            targetNamespace="http://www.hiccup.top/schema/spring-ext">
 
     <!--声明一个标签，名字为user，类型为复杂类型userType-->
     <xsd:element name="user" type="userType" />

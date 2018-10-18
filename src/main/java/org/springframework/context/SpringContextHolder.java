@@ -15,7 +15,7 @@ public final class SpringContextHolder implements ApplicationContextAware {
     private static ApplicationContext applicationContext = null;
 
     public SpringContextHolder() {
-        System.out.println("Spring注入容器本身实例对象..");
+        System.out.println("Spring注入IOC容器本身实例..");
     }
 
     @Override
@@ -31,7 +31,7 @@ public final class SpringContextHolder implements ApplicationContextAware {
 
     private static void checkApplicationContext() {
         if(null == applicationContext) {
-            throw new IllegalStateException("applicationContext not injected.");
+            throw new IllegalStateException("ApplicationContext has not injected.");
         }
     }
 

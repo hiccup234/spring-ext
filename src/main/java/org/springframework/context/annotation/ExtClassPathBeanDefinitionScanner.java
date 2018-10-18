@@ -34,7 +34,7 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
     }
 
     private Replace getReplaceAnnotation(String beanClassName) throws ClassNotFoundException {
-//        Class clazz = ClassUtils.getClass(beanClassName);
+//        Class clazz = ReflectionUtils.getClass(beanClassName);
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         if(null == classLoader) {
             classLoader = this.getClass().getClassLoader();
