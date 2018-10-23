@@ -122,14 +122,14 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
 
             if (this.reader == null) {
                 // 4.1.4.RELEASE
-                this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
-                        this.problemReporter, this.metadataReaderFactory,
-                        this.resourceLoader, this.environment,
-                        this.importBeanNameGenerator, parser.getImportRegistry());
-                // 4.3.10.RELEASE
 //                this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
+//                        this.problemReporter, this.metadataReaderFactory,
 //                        this.resourceLoader, this.environment,
 //                        this.importBeanNameGenerator, parser.getImportRegistry());
+                // 4.3.10.RELEASE
+                this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
+                        this.resourceLoader, this.environment,
+                        this.importBeanNameGenerator, parser.getImportRegistry());
             }
             this.reader.loadBeanDefinitions(configClasses);
             alreadyParsed.addAll(configClasses);

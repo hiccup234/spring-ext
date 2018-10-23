@@ -6,11 +6,11 @@
 
     <groupId>top.hiccup</groupId>
     <artifactId>spring-ext</artifactId>
-    <version>4.1.4-SNAPSHOT</version>
+    <version>4.3.8-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
-        <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.1.4.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -97,17 +97,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- 目前打包到公司的远程仓库，这里不要上传 -->
-    <distributionManagement>
-        <repository>
-            <id>wlqq-releases</id>
-            <url>http://nexus.56qq.cn:81/content/repositories/wlqq-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>wlqq-snapshots</id>
-            <url>http://nexus.56qq.cn:81/content/repositories/wlqq-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>

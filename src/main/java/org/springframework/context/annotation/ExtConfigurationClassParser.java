@@ -609,6 +609,11 @@ class ExtConfigurationClassParser {
             return (list == null || list.isEmpty() ? null : list.get(list.size() - 1));
         }
 
+        @Override
+        public void removeImportingClass(String importingClass) {
+
+        }
+
 
         /**
          * Simplified contains() implementation that tests to see if any {@link ConfigurationClass}
