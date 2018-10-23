@@ -68,7 +68,7 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
     private SourceExtractor sourceExtractor = (SourceExtractor) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "sourceExtractor", this);
 
     /**
-     * 重写ConfigurationClassPostProcessor.processConfigBeanDefinitions方法，parser更换成扩展后的类
+     * 重写ConfigurationClassPostProcessor.processConfigBeanDefinitions方法，将parser更换成扩展后的类
      * @param registry
      */
     @Override
@@ -105,7 +105,7 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
         }
 
         // Parse each @Configuration class
-        // TODO 这里换成扩展的解析器
+        // 这里换成扩展的解析器
         ExtConfigurationClassParser parser = new ExtConfigurationClassParser(
                 this.metadataReaderFactory, this.problemReporter, this.environment,
                 this.resourceLoader, this.componentScanBeanNameGenerator, registry);
