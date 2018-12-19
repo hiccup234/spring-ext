@@ -28,7 +28,6 @@ import static org.springframework.context.annotation.AnnotationConfigUtils.CONFI
  *
  * 扩展ConfigurationClassPostProcessor
  *
- * 见：
  * <p>This post processor is {@link Ordered#HIGHEST_PRECEDENCE} as it is important
  * that any {@link Bean} methods declared in Configuration classes have their
  * respective bean definitions registered before any other BeanFactoryPostProcessor
@@ -47,25 +46,25 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
      * 这里有没有更好的实现方式呢？（感觉Spring的这个类扩展起来很麻烦）
      */
     private static final String IMPORT_REGISTRY_BEAN_NAME
-            = (String)ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "IMPORT_REGISTRY_BEAN_NAME", null);
+            = (String)ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, null, "IMPORT_REGISTRY_BEAN_NAME");
 
-    private MetadataReaderFactory metadataReaderFactory = (MetadataReaderFactory) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "metadataReaderFactory", this);
+    private MetadataReaderFactory metadataReaderFactory = (MetadataReaderFactory) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "metadataReaderFactory");
 
-    private boolean localBeanNameGeneratorSet = (Boolean) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "localBeanNameGeneratorSet", this);
+    private boolean localBeanNameGeneratorSet = (Boolean) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "localBeanNameGeneratorSet");
 
-    private BeanNameGenerator componentScanBeanNameGenerator = (BeanNameGenerator) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "componentScanBeanNameGenerator", this);
+    private BeanNameGenerator componentScanBeanNameGenerator = (BeanNameGenerator) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "componentScanBeanNameGenerator");
 
-    private BeanNameGenerator importBeanNameGenerator = (BeanNameGenerator) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "importBeanNameGenerator", this);
+    private BeanNameGenerator importBeanNameGenerator = (BeanNameGenerator) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "importBeanNameGenerator");
 
-    private ProblemReporter problemReporter = (ProblemReporter) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "problemReporter", this);
+    private ProblemReporter problemReporter = (ProblemReporter) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "problemReporter");
 
-    private Environment environment = (Environment) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "environment", this);
+    private Environment environment = (Environment) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "environment");
 
-    private ResourceLoader resourceLoader = (ResourceLoader) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "resourceLoader", this);
+    private ResourceLoader resourceLoader = (ResourceLoader) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "resourceLoader");
 
-    private ConfigurationClassBeanDefinitionReader reader = (ConfigurationClassBeanDefinitionReader) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "reader", this);
+    private ConfigurationClassBeanDefinitionReader reader = (ConfigurationClassBeanDefinitionReader) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "reader");
 
-    private SourceExtractor sourceExtractor = (SourceExtractor) ReflectionUtils.getParentField(ConfigurationClassPostProcessor.class, "sourceExtractor", this);
+    private SourceExtractor sourceExtractor = (SourceExtractor) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "sourceExtractor");
 
     /**
      * 重写ConfigurationClassPostProcessor.processConfigBeanDefinitions方法，将parser更换成扩展后的类

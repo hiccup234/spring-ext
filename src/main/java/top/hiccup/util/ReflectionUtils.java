@@ -11,7 +11,7 @@ import java.lang.reflect.Modifier;
  */
 public class ReflectionUtils {
 
-    public static Object getParentField(Class clazz, String filedName, Object object) {
+    public static Object getFieldValue(Class clazz, Object object, String filedName) {
         Field field = null;
         Field modifiersField = null;
         boolean isAccessible = false;
@@ -36,6 +36,37 @@ public class ReflectionUtils {
             throw new RuntimeException(e);
         } finally {
             // 这里一定要记得设置回原访问权限
+            try {
+                modifiersField.setInt(field, modifiersBak);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+            modifiersField.setAccessible(false);
+            field.setAccessible(isAccessible);
+        }
+    }
+
+    public static void setFieldValue(Class clazz, Object object, String filedName, Object filedValue) {
+        Field field = null;
+        Field modifiersField = null;
+        boolean isAccessible = false;
+        int modifiersBak = Modifier.FINAL;
+        try {
+            field = clazz.getDeclaredField(filedName);
+            isAccessible = field.isAccessible();
+            modifiersBak = field.getModifiers();
+            modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            if (Modifier.isFinal(modifiersBak)) {
+                modifiersField.setInt(field, modifiersBak & ~Modifier.FINAL);
+            }
+            field.setAccessible(true);
+            field.set(object, filedValue);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } finally {
             try {
                 modifiersField.setInt(field, modifiersBak);
             } catch (IllegalAccessException e) {
