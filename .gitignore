@@ -1,5 +1,4 @@
-# target/
-target/
+# 需要忽略的目录和文件
 
 # IDEA #
 .idea/
@@ -10,14 +9,5 @@ target/
 .classpath
 .project
 
-# Log #
-logs/
-*.log%
-
-# mac
-.DS_Store
-
-# svn
-.svn
-#reviewboardrc
-.reviewboardrc
+# target/
+target/
