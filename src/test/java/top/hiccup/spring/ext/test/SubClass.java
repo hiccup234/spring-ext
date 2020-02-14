@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 @Replace
 public class SubClass extends BaseClass {
 
-    private String name = "subClass";
-
+    @Override
     public String getName(){
-        return name;
+        return "SubClass";
     }
+
 }

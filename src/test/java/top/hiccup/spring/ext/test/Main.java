@@ -9,7 +9,7 @@ public class Main {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/root-context.xml");
         BaseClass bean = (BaseClass) applicationContext.getBean("testBean");
-        System.out.println(bean.name);
+        System.out.println(bean.getName());
 
     }
 }

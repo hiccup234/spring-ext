@@ -5,5 +5,7 @@ import org.springframework.stereotype.Service;
 @Service("testBean")
 public class BaseClass {
 
-    public String name = "hahaaha";
+    public String getName(){
+        return "BaseClass";
+    }
 }
