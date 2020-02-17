@@ -4,7 +4,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.parsing.BeanComponentDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.ParserContext;
-import org.springframework.context.SpringContextHolder;
+import top.hiccup.spring.ext.SpringContextHolder;
 import org.w3c.dom.Element;
 
 public class ExtAnnotationConfigBeanDefinitionParser extends AnnotationConfigBeanDefinitionParser

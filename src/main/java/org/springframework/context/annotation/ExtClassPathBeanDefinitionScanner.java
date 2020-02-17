@@ -14,7 +14,6 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner
 {
     protected static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
-    protected final Log logger = LogFactory.getLog(getClass());
 
     protected ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
 
@@ -44,6 +43,7 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
         return replace;
     }
 
+    @Override
     protected boolean checkCandidate(String beanName, BeanDefinition beanDefinition)
             throws IllegalStateException
     {

@@ -1,5 +1,8 @@
 package top.hiccup.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -11,6 +14,15 @@ import java.lang.reflect.Modifier;
  */
 public class ReflectionUtils {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReflectionUtils.class);
+
+    /**
+     * 获取某个对象的属性的值
+     * @param clazz
+     * @param object
+     * @param filedName
+     * @return
+     */
     public static Object getFieldValue(Class clazz, Object object, String filedName) {
         Field field = null;
         Field modifiersField = null;
@@ -31,14 +43,17 @@ public class ReflectionUtils {
             field.setAccessible(true);
             return field.get(object);
         } catch (NoSuchFieldException e) {
+            LOGGER.error("ReflectionUtils NoSuchFieldException: ", e);
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
+            LOGGER.error("ReflectionUtils IllegalAccessException: ", e);
             throw new RuntimeException(e);
         } finally {
             // 这里一定要记得设置回原访问权限
             try {
                 modifiersField.setInt(field, modifiersBak);
             } catch (IllegalAccessException e) {
+                LOGGER.error("ReflectionUtils IllegalAccessException: ", e);
                 throw new RuntimeException(e);
             }
             modifiersField.setAccessible(false);
@@ -46,6 +61,13 @@ public class ReflectionUtils {
         }
     }
 
+    /**
+     * set某个对象的属性的值
+     * @param clazz
+     * @param object
+     * @param filedName
+     * @param filedValue
+     */
     public static void setFieldValue(Class clazz, Object object, String filedName, Object filedValue) {
         Field field = null;
         Field modifiersField = null;
@@ -63,13 +85,16 @@ public class ReflectionUtils {
             field.setAccessible(true);
             field.set(object, filedValue);
         } catch (NoSuchFieldException e) {
+            LOGGER.error("ReflectionUtils NoSuchFieldException: ", e);
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
+            LOGGER.error("ReflectionUtils IllegalAccessException: ", e);
             throw new RuntimeException(e);
         } finally {
             try {
                 modifiersField.setInt(field, modifiersBak);
             } catch (IllegalAccessException e) {
+                LOGGER.error("ReflectionUtils IllegalAccessException: ", e);
                 throw new RuntimeException(e);
             }
             modifiersField.setAccessible(false);
