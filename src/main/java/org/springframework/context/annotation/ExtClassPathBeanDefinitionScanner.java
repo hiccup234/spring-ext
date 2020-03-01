@@ -25,6 +25,12 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 
+/**
+ * 扩展ClassPathBeanDefinitionScanner
+ *
+ * @author wenhy
+ * @date 2018/8/9
+ */
 public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner
 {
     protected static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
@@ -38,10 +44,10 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
     protected BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
     protected ScopeMetadataResolver scopeMetadataResolver = new AnnotationScopeMetadataResolver();
 
-    public ExtClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry)
-    {
+    public ExtClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry) {
         super(registry);
     }
+
     public ExtClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry, boolean useDefaultFilters) {
         super(registry, useDefaultFilters);
     }

@@ -9,13 +9,11 @@
             http://www.hiccup.top/schema/spring-ext-context http://www.hiccup.top/schema/spring-ext-context.xsd
             http://www.hiccup.top/schema/spring-ext http://www.hiccup.top/schema/spring-ext.xsd">
 
-    <bean class="org.springframework.context.annotation.ExtConfigurationClassPostProcessor" />
-
-    <!--自定义标签：使用示例：当当网数据源分片标签-->
-    <ext:user id="testUser" userId="234001" name="hiccup" age="26" />
-
     <!--自动扫描注解-->
     <context:component-scan base-package="top.hiccup.*"/>
 
+
+    <!--自定义标签：使用示例：当当网数据源分片标签-->
+    <ext:user id="testUser" userId="234001" name="hiccup" age="26" />
 
 </beans>

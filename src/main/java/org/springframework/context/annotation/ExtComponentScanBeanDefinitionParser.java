@@ -25,6 +25,12 @@ import org.springframework.beans.factory.xml.XmlReaderContext;
 import top.hiccup.spring.ext.SpringContextHolder;
 import org.w3c.dom.Element;
 
+/**
+ * 扩展ComponentScanBeanDefinitionParser
+ *
+ * @author wenhy
+ * @date 2018/8/8
+ */
 public class ExtComponentScanBeanDefinitionParser extends ComponentScanBeanDefinitionParser {
 
 //    protected static final String BASE_PACKAGE_ATTRIBUTE = "base-package";

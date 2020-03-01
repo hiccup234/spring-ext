@@ -23,6 +23,12 @@ import org.springframework.beans.factory.xml.ParserContext;
 import top.hiccup.spring.ext.SpringContextHolder;
 import org.w3c.dom.Element;
 
+/**
+ * 扩展AnnotationConfigBeanDefinitionParser
+ *
+ * @author wenhy
+ * @date 2018/8/8
+ */
 public class ExtAnnotationConfigBeanDefinitionParser extends AnnotationConfigBeanDefinitionParser
 {
     @Override
