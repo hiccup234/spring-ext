@@ -19,12 +19,14 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
 public class AnnotationConfigTest {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext gac = new AnnotationConfigApplicationContext();
-        BeanDefinitionRegistry beanDefinitionRegistry = gac;
-        beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
-                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
+//        AnnotationConfigApplicationContext gac = new AnnotationConfigApplicationContext();
+//        BeanDefinitionRegistry beanDefinitionRegistry = gac;
+//        beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
+//                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
 //        gac.register(AppConfig.class);
-        gac.refresh();
+//        gac.refresh();
+
+        AnnotationConfigApplicationContext gac = new AnnotationConfigApplicationContext(AppConfig.class);
 
         BaseClass bean = (BaseClass) gac.getBean(BaseClass.class);
         System.out.println(bean.getName());

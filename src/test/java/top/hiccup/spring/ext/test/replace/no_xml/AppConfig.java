@@ -12,10 +12,10 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  * @author wenhy
  * @date 2020/3/1
  */
-//@Configuration
-////@ComponentScan(basePackages = " top.hiccup.spring.ext")
-//public class AppConfig {
-//
+@Configuration
+@ComponentScan(basePackages = " top.hiccup.spring.ext")
+public class AppConfig {
+
 //    @Bean
 //    public BaseClass testBean() {
 //        return new BaseClass();
@@ -25,4 +25,4 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
 //    public BaseClass testBean2() {
 //        return new SubClass();
 //    }
-//}
+}

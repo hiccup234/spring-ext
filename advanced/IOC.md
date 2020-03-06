@@ -1,10 +1,27 @@
 
-
 Spring是一个容器，用于解决具有依赖关系的对象创建问题，以及管理对象的生命周期。
 
 ## Spring框架特点
 轻量，控制反转(IOC,DI)，面向切面的编程(AOP)，容器(管理应用中对象的生命周期和配置)
 MVC框架，事务管理，异常处理（把具体技术相关的异常（比如JDBC，Hibernate，JDO抛出的）转化为一致的unchecked异常
+
+Spring扫描class文件，将其解析成BeanDefinition，在BeanDefinition中会描述类的信息，
+例如:某个类是否是单例的，Bean的类型，是否是懒加载，依赖哪些类，自动装配的模型。
+Spring创建对象时，就是根据BeanDefinition中的信息来创建Bean。
+
+DefaultListableBeanFactory有几个非常重要的属性：
+beanDefinitionMap存放bean所对应的BeanDefinition
+beanDefinitionNames存放所有bean的name
+singletonObjects是一个Map，用来存放所有创建好的单例Bean（多例BeanSpring不会管理生命周期）
+
+Spring中有很多后置处理器，一般分为两种：
+BeanFactoryPostProcessor和BeanPostProcessor
+前者是用来干预BeanFactory的创建过程，
+后者是用来干预Bean的创建过程。
+
+后置处理器的作用十分重要，bean的创建以及AOP的实现全部依赖后置处理器。
+
+refresh()方法很重要
 
 ## ApplicationContext与BeanFactory区别？ BeanFactory与FactoryBean区别？
 基本可以理解为：ApplicationContext = BeanFactory + Resources
@@ -19,7 +36,6 @@ FactoryBean 为工厂方法模式的工厂bean，通过factory-method属性指�
 
 常见的WebApplicationContext: 
 GenericWebApplicationContext、AnnotationConfigWebApplicationContext
-
 
 
  * Spring容器初始化开始:
@@ -58,4 +74,3 @@ GenericWebApplicationContext、AnnotationConfigWebApplicationContext
  *
  * 和其他scope相比,Spring并没有管理prototype实例完整的生命周期,在实例化,配置,组装对象交给应用后,spring不再管理。
  * 只要bean本身不持有对另一个资源（如数据库连接或会话对象）的引用，只要删除了对该对象的所有引用或对象超出范围，就会立即收集垃圾。
- *
