@@ -10,7 +10,7 @@ MVC框架，事务管理，异常处理（把具体技术相关的异常（比�
 
 Spring扫描class文件，将其解析成BeanDefinition，在BeanDefinition中描述类的信息，
 例如:某个类是否是单例的，Bean的类型，是否是懒加载，依赖哪些类，自动装配的模型。
-Spring创建对象时，就是根据BeanDefinition中的信息来创建Bean。
+Spring创建对象时（反射），就是根据BeanDefinition中的信息来创建Bean。 Class.forName("").newInstance()
 
 DefaultListableBeanFactory有几个非常重要的属性：
 beanDefinitionMap存放bean所对应的BeanDefinition
@@ -32,14 +32,16 @@ POJO
 
 ## ApplicationContext与BeanFactory区别？ BeanFactory与FactoryBean区别？
 基本可以理解为：ApplicationContext = BeanFactory + Resources
+初始化Bean的时机不同，BeanFactory一般是等到需要用时才创建，而ApplicationContext是在容器创建时就初始化singleton的Bean。
+
 FactoryBean 为工厂方法模式的工厂bean，通过factory-method属性指定
 
 ## IOC方式一般有2种
    构造器注入
    Setter方法注入
     
-## Spring bean的5种作用域：singleton prototype request session  global-session
-
+## Spring bean 的5种作用域：singleton、prototype、request、session、global-session
+Spring只解决了singleton的循环依赖问题
 
 常见的WebApplicationContext: 
 GenericWebApplicationContext、AnnotationConfigWebApplicationContext
