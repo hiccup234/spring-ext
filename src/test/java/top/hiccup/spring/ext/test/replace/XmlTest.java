@@ -15,7 +15,7 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  * 如果应用需要替换容器中指定的Bean一般有一下几种方案：
  *
  * 1.通过BeanPostProcessor来动态替换
- * （这样的实现非常不优雅，使组件跟Spring生命周期接口产生强耦合，而且无法决定加载顺序）
+ * （这样的实现非常不优雅，使组件跟Spring生命周期接口产生强耦合，而且需要）
  *      public class MyConfigImpl extends DefaultConfigImpl implements BeanPostProcessor {
  *
  *          @Override
