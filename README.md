@@ -20,3 +20,11 @@ public class SubClass extends BaseClass {
         return "SubClass";
     }
 }
+
+
+-- Maven中央仓库坐标
+<dependency>
+    <groupId>top.hiccup</groupId>
+    <artifactId>spring-ext</artifactId>
+    <version>5.2.2.0-SNAPSHOT</version>
+</dependency>

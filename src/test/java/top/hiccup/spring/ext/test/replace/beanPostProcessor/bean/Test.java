@@ -1,6 +1,6 @@
 package top.hiccup.spring.ext.test.replace.beanPostProcessor.bean;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * F
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author wenhy
  * @date 2020/3/11
  */
-@Service
+@Component
 public class Test {
 
 }

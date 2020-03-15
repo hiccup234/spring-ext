@@ -19,8 +19,7 @@ singletonObjects是一个Map，用来存放所有创建好的单例Bean（多例
 
 Spring中有很多后置处理器，一般分为两种：
 BeanFactoryPostProcessor和BeanPostProcessor
-前者是用来干预BeanFactory的创建过程，
-后者是用来干预Bean的创建过程。
+前者是用来干预BeanFactory的创建过程，后者是用来干预Bean的创建过程。
 
 后置处理器的作用十分重要，bean的创建以及AOP的实现全部依赖后置处理器。
 
@@ -33,6 +32,8 @@ POJO
 ## ApplicationContext与BeanFactory区别？ BeanFactory与FactoryBean区别？
 基本可以理解为：ApplicationContext = BeanFactory + Resources
 初始化Bean的时机不同，BeanFactory一般是等到需要用时才创建，而ApplicationContext是在容器创建时就初始化singleton的Bean。
+
+BeanFactory需要手动注册BeanPostProcessor和BeanFactoryPostProcessor，而ApplicationContext是自动注册的。
 
 FactoryBean 为工厂方法模式的工厂bean，通过factory-method属性指定
 

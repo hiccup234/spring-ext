@@ -13,14 +13,15 @@ import org.springframework.stereotype.Component;
  * @author wenhy
  * @date 2018/1/26
  */
-@Component(value="springContextHolder")
+@Component(value = "springContextHolder")
 public final class SpringContextHolder implements ApplicationContextAware {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringContextHolder.class);
 
     private static ApplicationContext applicationContext = null;
 
-    public SpringContextHolder() { }
+    public SpringContextHolder() {
+    }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -35,7 +36,7 @@ public final class SpringContextHolder implements ApplicationContextAware {
     }
 
     private static void checkApplicationContext() {
-        if(null == applicationContext) {
+        if (null == applicationContext) {
             LOGGER.error("ApplicationContext has not injected.");
             throw new IllegalStateException("ApplicationContext has not injected.");
         }
@@ -43,6 +44,18 @@ public final class SpringContextHolder implements ApplicationContextAware {
 
     public static <T> T getBean(String name) {
         return (T) applicationContext.getBean(name);
+    }
+
+    public static boolean containsBean(String name) {
+        return applicationContext.containsBean(name);
+    }
+
+    public static boolean isSingleton(String name) {
+        return applicationContext.isSingleton(name);
+    }
+
+    public static Class<? extends Object> getType(String name) {
+        return applicationContext.getType(name);
     }
 
 }

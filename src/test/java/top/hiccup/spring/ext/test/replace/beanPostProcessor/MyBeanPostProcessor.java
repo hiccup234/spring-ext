@@ -35,7 +35,7 @@ public class MyBeanPostProcessor implements ApplicationContextAware, BeanPostPro
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (beanName.equals("defaultConfig")) {
             // 如果遇到需要替换的Bean，我们直接换成自己实现的bean
-            // 这里的myConfig继承了defaultConfig，否则引用的地方会报错
+            // 这里的myConfig要继承自defaultConfig，否则引用的地方会报错
             return applicationContext.getBean("myConfig");
         }
         return bean;
