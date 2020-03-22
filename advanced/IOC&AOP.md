@@ -8,6 +8,11 @@ Spring用到的设计模式有：工厂、抽象工厂、单例、命令、责�
 比EJB更轻量，控制反转(IOC,DI)，面向切面的编程(AOP)，容器(管理应用中对象的生命周期和配置)
 MVC框架，事务管理，异常处理（把具体技术相关的异常（比如JDBC，Hibernate，JDO抛出的）转化为一致的unchecked异常
 
+### IOC方式一般有2种
+    * 构造器注入
+    * Setter方法注入
+Spring容器管理POJO，而EJB管理的是JavaBean。
+
 Spring扫描class文件，将其解析成BeanDefinition，在BeanDefinition中描述类的信息，
 例如:某个类是否是单例的，Bean的类型，是否是懒加载，依赖哪些类，自动装配的模型。
 Spring创建对象时（反射），就是根据BeanDefinition中的信息来创建Bean。 Class.forName("").newInstance()
@@ -17,29 +22,29 @@ beanDefinitionMap存放bean所对应的BeanDefinition
 beanDefinitionNames存放所有bean的name
 singletonObjects是一个Map，用来存放所有创建好的单例Bean（多例BeanSpring不会管理生命周期）
 
-Spring中有很多后置处理器，一般分为两种：
-BeanFactoryPostProcessor和BeanPostProcessor
-前者是用来干预BeanFactory的创建过程，后者是用来干预Bean的创建过程。
-
+### Spring中有很多后置处理器，一般分为两种：
+BeanFactoryPostProcessor和BeanPostProcessor，前者是用来干预BeanFactory的创建过程，后者是用来干预Bean的创建过程。
 后置处理器的作用十分重要，bean的创建以及AOP的实现全部依赖后置处理器。
 
-refresh()方法很重要
-
-POJO
-
-
-
-## ApplicationContext与BeanFactory区别？ BeanFactory与FactoryBean区别？
+### ApplicationContext与BeanFactory区别？ BeanFactory与FactoryBean区别？
 基本可以理解为：ApplicationContext = BeanFactory + Resources
 初始化Bean的时机不同，BeanFactory一般是等到需要用时才创建，而ApplicationContext是在容器创建时就初始化singleton的Bean。
 
 BeanFactory需要手动注册BeanPostProcessor和BeanFactoryPostProcessor，而ApplicationContext是自动注册的。
 
+### Annotation对比
+@PostConstruct  ==  xml中的 init-method
+@preDestory  ==  xml中的 destroy-method
+
+@Autowired 默认是 byType 装配的，可以搭配 @Qualifier。（@Autowired可以搭配数组，List，Map等使用                     ）
+
+
+=============================================================================================
+
+refresh()方法很重要
 FactoryBean 为工厂方法模式的工厂bean，通过factory-method属性指定
 
-## IOC方式一般有2种
-   构造器注入
-   Setter方法注入
+
     
 ## Spring bean 的5种作用域：singleton、prototype、request、session、global-session
 Spring只解决了singleton的循环依赖问题

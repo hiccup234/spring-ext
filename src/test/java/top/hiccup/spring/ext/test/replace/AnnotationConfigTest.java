@@ -17,9 +17,11 @@ public class AnnotationConfigTest {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext gac = new AnnotationConfigApplicationContext();
-        BeanDefinitionRegistry beanDefinitionRegistry = gac;
-        beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
-                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
+
+//        BeanDefinitionRegistry beanDefinitionRegistry = gac;
+//        beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
+//                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
+
         gac.register(AnnotationConfigTest.class);
         gac.refresh();
         BaseClass bean = (BaseClass) gac.getBean(BaseClass.class);
