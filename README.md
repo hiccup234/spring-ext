@@ -20,7 +20,8 @@ public class SubClass extends BaseClass {
     }
 }
 
--- Maven中央仓库坐标 -- 对应Spring5.2.2
+## Maven中央仓库坐标 
+对应Spring的5.2.2
 ```
 <dependency>
     <groupId>top.hiccup</groupId>
