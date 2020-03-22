@@ -1,4 +1,4 @@
-package top.hiccup.spring.ext.test.replace.boot;
+package top.hiccup.spring.ext.test.replace.boot.bean;
 
 import org.springframework.context.annotation.Replace;
 

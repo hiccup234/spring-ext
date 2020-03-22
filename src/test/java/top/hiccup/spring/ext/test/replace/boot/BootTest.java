@@ -3,6 +3,7 @@ package top.hiccup.spring.ext.test.replace.boot;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import top.hiccup.spring.ext.test.ExtSpringApplication;
+import top.hiccup.spring.ext.test.replace.boot.bean.DefaultConfig;
 
 /**
  * Spring Boot
