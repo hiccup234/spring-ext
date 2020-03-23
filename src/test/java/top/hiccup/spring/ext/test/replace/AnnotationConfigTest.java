@@ -1,6 +1,5 @@
 package top.hiccup.spring.ext.test.replace;
 
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.*;
 import top.hiccup.spring.ext.test.replace.bean.BaseClass;
@@ -12,16 +11,13 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  * @date 2018/7/29
  */
 @Configuration
-@ComponentScan(basePackages = " top.hiccup.spring.ext")
+@ComponentScan(basePackages = " top.hiccup.spring.ext.test.replace.bean")
 public class AnnotationConfigTest {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext gac = new AnnotationConfigApplicationContext();
-
-//        BeanDefinitionRegistry beanDefinitionRegistry = gac;
-//        beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
-//                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
-
+        gac.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
+                new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
         gac.register(AnnotationConfigTest.class);
         gac.refresh();
         BaseClass bean = (BaseClass) gac.getBean(BaseClass.class);

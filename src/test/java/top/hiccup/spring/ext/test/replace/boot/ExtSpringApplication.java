@@ -1,4 +1,4 @@
-package top.hiccup.spring.ext.test;
+package top.hiccup.spring.ext.test.replace.boot;
 
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;

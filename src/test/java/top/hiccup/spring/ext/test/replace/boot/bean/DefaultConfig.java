@@ -1,8 +1,8 @@
 package top.hiccup.spring.ext.test.replace.boot.bean;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service("defaultConfig")
+@Component("defaultConfig")
 public class DefaultConfig {
 
     /**
@@ -11,6 +11,6 @@ public class DefaultConfig {
     public String name = "defaultConfig";
 
     public String getName() {
-        return "defaultConfig";
+        return name;
     }
 }
