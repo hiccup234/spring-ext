@@ -2,7 +2,7 @@
 学习 spring framework 时编写的测试程序以及一些有趣的扩展开发
 
 ## @Replace 注解
-@Replace一般修饰在类上，主要用来快速替换Spring容器中已有的Bean组件
+@Replace一般修饰在类上，主要用来快速替换Spring容器中的Bean组件
 
 父类申明：
 @Service("testBean")
