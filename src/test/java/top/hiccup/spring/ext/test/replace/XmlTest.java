@@ -32,13 +32,15 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  *
  * 3.通过@Replace注解结合Configuation实现组件替换功能
  *
+ * 4.通过获取器注入（lookup-method）返回子类bean，麻烦的是要去管理这种替换关系
+ *
  * @author wenhy
  * @date 2018/7/29
  */
 public class XmlTest {
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/root-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/ext/root-context.xml");
         BaseClass bean = (BaseClass) applicationContext.getBean("testBean");
         System.out.println(bean.getName());
         // 属性字段不具备多态，所以通过BaseClass访问的属性任然是父类的属性

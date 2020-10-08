@@ -12,7 +12,6 @@
     <properties>
         <spring.version>5.2.2.RELEASE</spring.version>
         <slf4j.version>1.7.25</slf4j.version>
-
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
     </properties>
 
@@ -28,25 +27,10 @@
     </distributionManagement>
 
     <dependencies>
-        <!-- springframework核心4包 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        <!-- springframework核心context包 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
         </dependency>
 

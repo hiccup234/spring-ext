@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.*;
 
 /**
- * Replace注解：
- * 在Spring启动加载Bean时，被@Replace标注的组件替换容器中原来的同名组件
+ * Replace注解：在Spring启动加载Bean时，被@Replace标注的组件替换容器中原来的同名组件
  *
  * @author wenhy
  * @date 2018/5/31
