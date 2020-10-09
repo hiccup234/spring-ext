@@ -2,18 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.hiccup.top/schema/spring-ext-context"
-
-       xmlns:ext="http://www.hiccup.top/schema/spring-ext"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.hiccup.top/schema/spring-ext-context http://www.hiccup.top/schema/spring-ext-context.xsd
-            http://www.hiccup.top/schema/spring-ext http://www.hiccup.top/schema/spring-ext.xsd">
+            http://www.hiccup.top/schema/spring-ext-context http://www.hiccup.top/schema/spring-ext-context.xsd">
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="-->
+<!--            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">-->
 
     <!--自动扫描注解-->
-    <context:component-scan base-package="top.hiccup.*"/>
+    <context:component-scan base-package="top.hiccup.spring.ext.test.replace.bean"/>
 
-
-    <!--自定义标签：使用示例：当当网数据源分片标签-->
-    <ext:user id="testUser" userId="234001" name="hiccup" age="26" />
+<!--    // 导致无法扫描到bean-->
+<!--    <context:component-scan base-package="top.hiccup.spring.ext.test.replace.bean.*"/>-->
+<!--    // 扫描到beandefinition但没实例化-->
+<!--    <context:component-scan base-package="top.hiccup.spring.ext.test.replace.bean*"/>-->
 
 </beans>

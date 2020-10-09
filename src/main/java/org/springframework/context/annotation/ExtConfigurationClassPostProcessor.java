@@ -119,6 +119,10 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
             }
         }
 
+        if (environment == null) {
+            environment = (Environment) ReflectionUtils.getFieldValue(ConfigurationClassPostProcessor.class, this, "environment");
+        }
+
         // Parse each @Configuration class
         // 这里换成扩展的解析器
         ExtConfigurationClassParser parser = new ExtConfigurationClassParser(

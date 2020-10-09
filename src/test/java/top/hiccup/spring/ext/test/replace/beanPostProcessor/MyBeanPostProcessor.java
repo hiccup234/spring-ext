@@ -4,7 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Component;
  * @date 2020/3/11
  */
 @Component
-//@Order(0)
 public class MyBeanPostProcessor implements ApplicationContextAware, BeanPostProcessor {
 
     private ApplicationContext applicationContext;
@@ -39,5 +37,10 @@ public class MyBeanPostProcessor implements ApplicationContextAware, BeanPostPro
             return applicationContext.getBean("myConfig");
         }
         return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        return null;
     }
 }

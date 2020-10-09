@@ -15,13 +15,10 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  * 如果应用需要替换容器中指定的Bean一般有一下几种方案：
  *
  * 1.通过BeanPostProcessor来动态替换
- * （这样的实现非常不优雅，使组件跟Spring生命周期接口产生强耦合，而且需要）
+ * （这样的实现非常不优雅，使组件跟Spring生命周期接口产生强耦合）
  *      public class MyConfigImpl extends DefaultConfigImpl implements BeanPostProcessor {
- *
- *          @Override
  *          public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
  *              if (beanName.equals("defaultcfg")) {
- *                  // do something
  *                  return otherBean;
  *              }
  *              return bean;
@@ -30,9 +27,7 @@ import top.hiccup.spring.ext.test.replace.bean.SubClass;
  *
  * 2.通过@Replace注解，扩展Spring原生的context名称空间，在加载Bean时直接替换
  *
- * 3.通过@Replace注解结合Configuation实现组件替换功能
- *
- * 4.通过获取器注入（lookup-method）返回子类bean，麻烦的是要去管理这种替换关系
+ * 3.通过获取器注入（lookup-method）返回子类bean，麻烦的是要去管理这种替换关系
  *
  * @author wenhy
  * @date 2018/7/29
@@ -43,7 +38,7 @@ public class XmlTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/ext/root-context.xml");
         BaseClass bean = (BaseClass) applicationContext.getBean("testBean");
         System.out.println(bean.getName());
-        // 属性字段不具备多态，所以通过BaseClass访问的属性任然是父类的属性
+        // 属性字段不具备多态，所以通过BaseClass引用访问的属性任然是父类的属性
         System.out.println(bean.name);
         System.out.println(((SubClass)bean).name);
         System.out.println(((BaseClass)bean).name);

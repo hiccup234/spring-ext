@@ -1,8 +1,8 @@
 package top.hiccup.spring.ext.test.replace.bean;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service("testBean")
+@Component("testBean")
 public class BaseClass {
 
     /**
@@ -11,6 +11,6 @@ public class BaseClass {
     public String name = "base";
 
     public String getName() {
-        return "BaseClass";
+        return "I am BaseClass";
     }
 }

@@ -1,8 +1,6 @@
-#参照spring将xsd放在源码同路径下（这里有个巨坑，Spring默认会从url中加载，如果找不到则直接报“通配符的匹配很全面, 但无法找到元素”）
-#http\://www.hiccup.top/schema/spring-ext-context=META-INF/spring-ext-context.xsd
+# Spring默认先从ClassPathResource加载xsd，见PluggableSchemaResolver
+http\://www.hiccup.top/schema/spring-ext-context.xsd=META-INF/spring-ext-context.xsd
 
-http\://www.hiccup.top/schema/spring-ext-context=org/springframework/context/config/spring-ext-context.xsd
-
-http\://www.hiccup.top/schema/spring-ext=META-INF/spring-ext.xsd
+#http\://www.hiccup.top/schema/spring-ext=META-INF/spring-ext.xsd
 
 
