@@ -1,4 +1,4 @@
-# Spring默认先从ClassPathResource加载xsd，见PluggableSchemaResolver
+# Spring默认先从ClassPathResource加载xsd，见PluggableSchemaResolver（要以.xsd结尾）
 http\://www.hiccup.top/schema/spring-ext-context.xsd=META-INF/spring-ext-context.xsd
 
 #http\://www.hiccup.top/schema/spring-ext=META-INF/spring-ext.xsd

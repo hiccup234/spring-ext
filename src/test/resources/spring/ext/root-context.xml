@@ -21,4 +21,8 @@
 <!--    // 扫描到beandefinition但没实例化-->
 <!--    <context:component-scan base-package="top.hiccup.spring.ext.test.replace.bean*"/>-->
 
+    <!-- 可以成功 具体见：ClassPathScanningCandidateComponentProvider.findCandidateComponents   https://blog.csdn.net/u012325167/article/details/75388990 -->
+    <!--<context:component-scan base-package="top.hiccup.spring.ext.test.replace.bean.**"/>-->
+
+
 </beans>
