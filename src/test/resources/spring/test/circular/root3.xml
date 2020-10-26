@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- “prototype”作用域的Bean，Spring容器无法完成依赖注入，也不进行缓存，因此无法提前暴露一个创建中的Bean -->
+    <bean id="a" class="top.hiccup.spring.test.circular.StudentA" scope="prototype" p:studentB-ref="b" />
+    <bean id="b" class="top.hiccup.spring.test.circular.StudentB" scope="prototype" p:studentC-ref="c" />
+    <bean id="c" class="top.hiccup.spring.test.circular.StudentC" scope="prototype" p:studentA-ref="a" />
+
+</beans>
