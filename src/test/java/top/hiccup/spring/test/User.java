@@ -1,7 +1,7 @@
 package top.hiccup.spring.test;
 
 /**
- * F
+ * User
  *
  * @author wenhy
  * @date 2020/10/2
@@ -10,7 +10,7 @@ public class User {
 
     private String name;
 
-    private Integer age;
+    private String age;
 
     public String getName() {
         return name;
@@ -20,11 +20,11 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
