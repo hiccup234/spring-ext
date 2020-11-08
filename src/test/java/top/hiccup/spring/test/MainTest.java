@@ -30,7 +30,6 @@ public class MainTest {
         xmlBeanDefinitionReader.loadBeanDefinitions(new ClassPathResource("spring/test/root2.xml"));
         System.out.println(xmlBeanFactory.getBean("user2"));
 
-
         //
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/test/root.xml");
         User user = (User) applicationContext.getBean("user");
