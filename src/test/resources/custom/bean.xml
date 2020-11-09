@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.hiccup.top/schema/custom"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.hiccup.top/schema/custom http://www.hiccup.top/schema/custom.xsd">
+
+    <!-- c名称空间是可以自己指定的，自定义标签 -->
+    <c:user id="user" name="hiccup" age="26" />
+    <c:user id="user2" name="hiccup2" />
+
+</beans>

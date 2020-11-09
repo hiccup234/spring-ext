@@ -1,10 +1,7 @@
 package org.springframework.context.config;
 
 import org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser;
-import org.springframework.context.annotation.ComponentScanBeanDefinitionParser;
 import org.springframework.context.annotation.ExtComponentScanBeanDefinitionParser;
-
-import top.hiccup.spring.ext.UserBeanDefinitionParser;
 
 /**
  * Spring context名称空间处理器扩展类
@@ -13,13 +10,10 @@ import top.hiccup.spring.ext.UserBeanDefinitionParser;
  * @author wenhy
  * @date 2018/7/29
  */
-public class ExtContextNamespaceHandler extends ContextNamespaceHandler
-{
+public class ExtContextNamespaceHandler extends ContextNamespaceHandler {
+
     @Override
-    public void init()
-    {
-        // 注册元素user的BeanDefinition解析器，类似context中的component-scan
-        registerBeanDefinitionParser("user", new UserBeanDefinitionParser());
+    public void init() {
 
         registerBeanDefinitionParser("property-placeholder", new PropertyPlaceholderBeanDefinitionParser());
         registerBeanDefinitionParser("property-override", new PropertyOverrideBeanDefinitionParser());
