@@ -22,7 +22,7 @@ public class MainTest {
 
     @Test
     public void root2() {
-        // 单例setter方式（Spring通过singletonsCurrentlyInCreation判断是否循环依赖）
+        // 单例setter方式，Spring通过提前暴露刚完成构造器注入但未完成其他步骤（如setter注入）的bena来完成的
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/test/circular/root2.xml");
         StudentA a = (StudentA) applicationContext.getBean("a");
         System.out.println(a);
