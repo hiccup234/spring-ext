@@ -1,5 +1,6 @@
 package top.hiccup.spring.ext.test.replace.boot;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import top.hiccup.spring.ext.test.replace.boot.bean.DefaultConfig;
@@ -14,7 +15,10 @@ import top.hiccup.spring.ext.test.replace.boot.bean.DefaultConfig;
 public class BootTest {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = ExtSpringApplication.run(BootTest.class, args);
+//        ConfigurableApplicationContext ctx = ExtSpringApplication.run(BootTest.class, args);
+
+        ConfigurableApplicationContext ctx = SpringApplication.run(BootTest.class, args);
+
         DefaultConfig defaultConfig = ctx.getBean("defaultConfig", DefaultConfig.class);
         System.out.println(defaultConfig);
     }

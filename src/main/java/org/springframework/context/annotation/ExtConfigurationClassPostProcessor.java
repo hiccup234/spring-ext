@@ -93,12 +93,12 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
 
         for (String beanName : candidateNames) {
             BeanDefinition beanDef = registry.getBeanDefinition(beanName);
-            if (ConfigurationClassUtils.isFullConfigurationClass(beanDef) ||
-                    ConfigurationClassUtils.isLiteConfigurationClass(beanDef)) {
+            if (beanDef.getAttribute(ConfigurationClassUtils.CONFIGURATION_CLASS_ATTRIBUTE) != null) {
                 if (logger.isDebugEnabled()) {
                     logger.debug("Bean definition has already been processed as a configuration class: " + beanDef);
                 }
-            } else if (ConfigurationClassUtils.checkConfigurationClassCandidate(beanDef, this.metadataReaderFactory)) {
+            }
+            else if (ConfigurationClassUtils.checkConfigurationClassCandidate(beanDef, this.metadataReaderFactory)) {
                 configCandidates.add(new BeanDefinitionHolder(beanDef, beanName));
             }
         }

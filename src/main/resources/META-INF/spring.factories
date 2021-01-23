@@ -1,0 +1,4 @@
+# Application Context Initializers
+org.springframework.context.ApplicationContextInitializer=\
+top.hiccup.spring.ext.MyApplicationContextInitializer
+
