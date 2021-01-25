@@ -1,4 +1,8 @@
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+top.hiccup.spring.ext.BootExtEventPublishingRunListener
+
 # Application Context Initializers
 org.springframework.context.ApplicationContextInitializer=\
-top.hiccup.spring.ext.MyApplicationContextInitializer
+top.hiccup.spring.ext.BootExtApplicationContextInitializer
 

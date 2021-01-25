@@ -20,9 +20,6 @@ public final class SpringContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext = null;
 
-    public SpringContextHolder() {
-    }
-
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         // 在类的内部可以直接访问当前类的private属性
