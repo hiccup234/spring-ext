@@ -145,7 +145,7 @@ public class ExtConfigurationClassPostProcessor extends ConfigurationClassPostPr
 //                        this.problemReporter, this.metadataReaderFactory,
 //                        this.resourceLoader, this.environment,
 //                        this.importBeanNameGenerator, parser.getImportRegistry());
-                // 4.3.10.RELEASE
+                // 4.3.10.RELEASE以后
                 this.reader = new ConfigurationClassBeanDefinitionReader(registry, this.sourceExtractor,
                         this.resourceLoader, this.environment,
                         this.importBeanNameGenerator, parser.getImportRegistry());

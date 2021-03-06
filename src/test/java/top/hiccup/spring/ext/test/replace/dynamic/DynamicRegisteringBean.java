@@ -21,9 +21,12 @@ public class DynamicRegisteringBean {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(DynamicRegisteringBean.class);
         springApplication.setAllowBeanDefinitionOverriding(true);
+
         ConfigurableApplicationContext ctx = springApplication.run(args);
         System.out.println(((DefaultConfig) ctx.getBean("defaultConfig")).getName());
         ctx.getBean(UseBean.class).printName();
+
+
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(MyConfig.class);
         beanDefinitionBuilder.addPropertyValue("name", "this is a DynamicConfig");
         BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) ctx;
