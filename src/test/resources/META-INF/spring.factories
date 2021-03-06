@@ -1,0 +1,4 @@
+# PropertySource Loaders
+org.springframework.boot.env.PropertySourceLoader=\
+top.hiccup.spring.spi.json.MyJsonPropertySourceLoader
+
