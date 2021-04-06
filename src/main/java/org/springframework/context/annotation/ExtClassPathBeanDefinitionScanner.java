@@ -18,12 +18,8 @@ package org.springframework.context.annotation;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
-import org.springframework.core.type.classreading.MetadataReaderFactory;
+import org.springframework.util.ClassUtils;
 
 /**
  * 扩展ClassPathBeanDefinitionScanner
@@ -31,32 +27,16 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
  * @author wenhy
  * @date 2018/8/9
  */
-public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner
-{
-    protected static final String DEFAULT_RESOURCE_PATTERN = "**/*.class";
-
-    protected ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
-
-    protected MetadataReaderFactory metadataReaderFactory = new CachingMetadataReaderFactory(this.resourcePatternResolver);
-
-    protected String resourcePattern = "**/*.class";
-
-    protected BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
-    protected ScopeMetadataResolver scopeMetadataResolver = new AnnotationScopeMetadataResolver();
-
-    public ExtClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry) {
-        super(registry);
-    }
+public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
 
     public ExtClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry, boolean useDefaultFilters) {
         super(registry, useDefaultFilters);
     }
 
     private Replace getReplaceAnnotation(String beanClassName) throws ClassNotFoundException {
-//        Class clazz = ReflectionUtils.getClass(beanClassName);
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        if(null == classLoader) {
-            classLoader = this.getClass().getClassLoader();
+        ClassLoader classLoader = getClass().getClassLoader();
+        if (classLoader == null) {
+            classLoader = ClassUtils.getDefaultClassLoader();
         }
         Class clazz = Class.forName(beanClassName, true, classLoader);
         Replace replace = (Replace) AnnotationUtils.findAnnotation(clazz, Replace.class);
@@ -65,9 +45,9 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
 
     @Override
     protected boolean checkCandidate(String beanName, BeanDefinition beanDefinition) throws IllegalStateException {
-        if (!getRegistry().containsBeanDefinition(beanName)) {
-            return true;
-        }
+//        if (!getRegistry().containsBeanDefinition(beanName)) {
+//            return true;
+//        }
         BeanDefinition existingDef = getRegistry().getBeanDefinition(beanName);
         BeanDefinition originatingDef = existingDef.getOriginatingBeanDefinition();
         if (originatingDef != null) {
@@ -77,22 +57,23 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
             return false;
         }
 
-        try
-        {
+        /////////////////////////////////
+        try {
+            // 判断beanDefinition是不是本地化组件
             Replace replace = getReplaceAnnotation(beanDefinition.getBeanClassName());
             if (replace != null) {
-                if (this.logger.isWarnEnabled()) {
-                    this.logger.warn("组件名称【" + beanName + "】，本地组件类名【" + beanDefinition
-                            .getBeanClassName() + "】替换核心组件类名【" + existingDef.getBeanClassName() + "】");
+                if (logger.isWarnEnabled()) {
+                    logger.warn("组件名称【" + beanName + "】，本地组件类名【" + beanDefinition.getBeanClassName()
+                            + "】替换核心组件类名【" + existingDef.getBeanClassName() + "】");
                 }
                 return true;
             }
-
+            // 如果不是本地化组件，再看existingDef是否为本地化组件
             replace = getReplaceAnnotation(existingDef.getBeanClassName());
             if (replace != null) {
-                if (this.logger.isWarnEnabled()) {
-                    this.logger.warn("组件名称【" + beanName + "】，已加载本地组件类名【" + existingDef
-                            .getBeanClassName() + "】，忽略核心组件的加载【" + beanDefinition.getBeanClassName() + "】");
+                if (logger.isWarnEnabled()) {
+                    logger.warn("组件名称【" + beanName + "】，已加载本地组件类名【" + existingDef.getBeanClassName()
+                            + "】，忽略核心组件的加载【" + beanDefinition.getBeanClassName() + "】");
                 }
                 return false;
             }
@@ -100,9 +81,10 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
         } catch (ClassNotFoundException e) {
             logger.error("ExtClassPathBeanDefinitionScanner ClassNotFoundException: ", e);
         }
+        /////////////////////////////////
 
-        throw new IllegalStateException("Annotation-specified bean name '" + beanName + "' for bean class [" + beanDefinition
-                .getBeanClassName() + "] conflicts with existing, " + "non-compatible bean definition of same name and class [" + existingDef
-                .getBeanClassName() + "]");
+        throw new ConflictingBeanDefinitionException("Annotation-specified bean name '" + beanName +
+                "' for bean class [" + beanDefinition.getBeanClassName() + "] conflicts with existing, " +
+                "non-compatible bean definition of same name and class [" + existingDef.getBeanClassName() + "]");
     }
 }
