@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
  * @author wenhy
  * @date 2021/3/6
  */
-
 @Component
 public class Custom {
 
@@ -18,4 +17,5 @@ public class Custom {
 
     @Value("${age}")
     public Integer age;
+
 }

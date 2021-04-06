@@ -1,8 +1,9 @@
-package top.hiccup.spring.spi.json;
+package top.hiccup.spring.spi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import top.hiccup.spring.spi.json.Custom;
 
 /**
  * 集成Spring Boot
