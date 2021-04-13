@@ -11,7 +11,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * F
+ * test
  *
  * @author wenhy
  * @date 2020/3/15
@@ -23,8 +23,7 @@ public class ReplaceBeanFactoryPostProcessor implements BeanFactoryPostProcessor
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         if (beanFactory instanceof BeanDefinitionRegistry) {
             BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) beanFactory;
-            beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME,
-                    new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
+            beanDefinitionRegistry.registerBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME, new RootBeanDefinition(ExtConfigurationClassPostProcessor.class));
         } else {
             throw new RuntimeException("Can`t use spring-ext.jar");
         }

@@ -1,7 +1,5 @@
 package top.hiccup.spring.ext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringApplicationRunListener;
 
@@ -27,11 +25,4 @@ public class BootExtEventPublishingRunListener implements SpringApplicationRunLi
         application.setAllowBeanDefinitionOverriding(true);
     }
 
-//    @Override
-//    public void environmentPrepared(ConfigurableEnvironment environment) {
-//        Map<String, Object> source = new HashMap(4);
-//        source.put("spring.main.allow-bean-definition-overriding", Boolean.FALSE);
-//        PropertySource propertySource = new MapPropertySource("replace-properties", source);
-//        environment.getPropertySources().addLast(propertySource);
-//    }
 }
