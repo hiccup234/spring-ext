@@ -45,9 +45,9 @@ public class ExtClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSc
 
     @Override
     protected boolean checkCandidate(String beanName, BeanDefinition beanDefinition) throws IllegalStateException {
-//        if (!getRegistry().containsBeanDefinition(beanName)) {
-//            return true;
-//        }
+        if (!getRegistry().containsBeanDefinition(beanName)) {
+            return true;
+        }
         BeanDefinition existingDef = getRegistry().getBeanDefinition(beanName);
         BeanDefinition originatingDef = existingDef.getOriginatingBeanDefinition();
         if (originatingDef != null) {

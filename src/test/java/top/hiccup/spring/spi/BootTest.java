@@ -17,7 +17,7 @@ public class BootTest {
     public static void main(String[] args) {
 
         ConfigurableApplicationContext ctx = SpringApplication.run(BootTest.class, args);
-        Custom custom = ctx.getBean("custom", Custom.class);
+        Custom custom = ctx.getBean(Custom.class);
         System.out.println(custom.name);
         System.out.println(custom.age);
 
