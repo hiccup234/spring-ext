@@ -1,5 +1,5 @@
 # spring-ext
-学习 spring framework 时编写的测试程序以及一些有趣的扩展开发
+学习研究Spring时，编写的程序以及扩展开发
 
 ## Spring自定义标签扩展
     1、创建xsd文件
@@ -27,7 +27,7 @@ public class SubClass extends BaseClass {
 }
 
 ## Maven中央仓库坐标 
-对应Spring的5.2.2
+基于Spring的5.2.2
 ```
 <dependency>
     <groupId>top.hiccup</groupId>
