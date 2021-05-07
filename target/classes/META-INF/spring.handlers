@@ -1,2 +1,0 @@
-http\://www.hiccup.top/schema/spring-ext-context=org.springframework.context.config.ExtContextNamespaceHandler
-http\://www.hiccup.top/schema/spring-ext=org.springframework.context.config.ExtContextNamespaceHandler
